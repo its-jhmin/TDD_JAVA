@@ -26,10 +26,9 @@ public class PointServiceTest {
     @Mock PointHistoryTable mockHistoryTable;
     @InjectMocks PointService pointService;
 
-    private final long userId = 1l;
+    private final long userId = 1L;
     private final long point = 1_000L;
     private final long updateMillis = System.currentTimeMillis();
-    private final long historyId = 1L;
 
     //TODO-1. PointService.getPoint() 테스트
     //유저아이디를 사용하여 포인트를 조회한다
@@ -51,6 +50,7 @@ public class PointServiceTest {
     @Test
     void useUserId_getUserHistory(){
         //given
+        long historyId = 1L;
         PointHistory useHistory = new PointHistory(historyId,userId,point, TransactionType.USE, updateMillis);
         PointHistory chargeHistory = new PointHistory(historyId,userId,point, TransactionType.CHARGE, updateMillis);
         given(mockHistoryTable.selectAllByUserId(userId)).willReturn(List.of(useHistory,chargeHistory));
