@@ -102,6 +102,7 @@ public class PointServiceTest {
 
         //then
         Assertions.assertEquals(afterChargePoint,result.point()); //리뷰포인트2-검증시 어디까지 해야하는가?
+        //리뷰포인트2-History테이블에 접근했는지 여부와 관련된 검증도 해야하는가?
     }
 
     //TODO-4. PointService.use() 테스트
@@ -144,5 +145,6 @@ public class PointServiceTest {
 
         //then - 결과비교
         Assertions.assertEquals(afterUsePoint,result.point()); //리뷰포인트2-검증시 어디까지 해야하는가?
+        //리뷰포인트2-History테이블에 접근했는지 여부와 관련된 검증도 해야하는가?
     }
 }
