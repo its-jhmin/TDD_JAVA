@@ -30,7 +30,7 @@ public class PointService {
     public UserPoint charge(long id, long amount){
 
         //실패1 - 충전금액이 1원 미만일 때
-        if(amount <= 0) throw new IllegalArgumentException("충전금액을 1원이상 입력하세요.");
+        if(amount <= 0) throw new IllegalArgumentException("충전금액을 1원이상 입력하세요."); //리뷰포인트1. 에러메시지반환
 
         //사용자의 포인트 조회
         UserPoint userPoint = pointTable.selectById(id);
@@ -39,8 +39,8 @@ public class PointService {
         long chargedPoint = userPoint.point() + amount;
 
         //실패2 - 충전시 최대잔고금액기준을 초과할 때
-        if(chargedPoint > MAX_AMOUNT){
-            throw new IllegalArgumentException("최대잔고("+MAX_AMOUNT+"원)를 초과하여 충전할 수 없습니다.");
+        if (chargedPoint > MAX_AMOUNT) {
+            throw new IllegalArgumentException("최대잔고(" + MAX_AMOUNT + "원)를 초과하여 충전할 수 없습니다."); //리뷰포인트1. 에러메시지반환
         }
 
         //포인트 충전
@@ -56,7 +56,7 @@ public class PointService {
     public UserPoint use(long id, long amount){
 
         //실패1 - 사용금액이 0원 이하일 때
-        if(amount <= 0) throw new IllegalArgumentException("사용금액을 1원이상 입력하세요.");
+        if(amount <= 0) throw new IllegalArgumentException("사용금액을 1원이상 입력하세요."); //리뷰포인트1. 에러메시지반환
 
         //사용자의 포인트 조회
         UserPoint userPoint = pointTable.selectById(id);
@@ -65,7 +65,7 @@ public class PointService {
         long currentPoint = userPoint.point();
 
         //실패2 - 잔액부족
-        if(amount > currentPoint) throw new IllegalArgumentException("잔액부족: "+currentPoint+"원");
+        if(amount > currentPoint) throw new IllegalArgumentException("잔액부족: "+currentPoint+"원"); //리뷰포인트1. 에러메시지반환
 
         //포인트 사용 성공
         UserPoint userPoint_afterUse = pointTable.insertOrUpdate(id, currentPoint-amount);
