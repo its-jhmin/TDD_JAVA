@@ -68,7 +68,7 @@ public class PointServiceTest {
     void chargeFail_amountLessThanOne(){
         assertThatThrownBy(() -> pointService.charge(userId, -1_000L))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("충전금액을 1원이상 입력하세요.");
+                .hasMessage("충전금액을 1원이상 입력하세요."); //리뷰포인트1. 검증시 에러메세지 문자열 비교
     }
 
     //실패2 - 충전시 최대잔고금액기준을 초과할 때
@@ -81,7 +81,7 @@ public class PointServiceTest {
         //when,then
         assertThatThrownBy(() -> pointService.charge(userId, point))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("최대잔고");
+                .hasMessageContaining("최대잔고"); //리뷰포인트1. 검증시 에러메세지 문자열 비교
     }
 
     //충전 성공
@@ -110,7 +110,7 @@ public class PointServiceTest {
     void useFail_usingPointLessThanOne(){
         assertThatThrownBy(() -> pointService.use(userId, 0))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("사용금액을 1원이상 입력하세요.");
+                .hasMessageContaining("사용금액을 1원이상 입력하세요."); //리뷰포인트1. 검증시 에러메세지 문자열 비교
     }
 
     //실패2 - 잔액부족
@@ -122,7 +122,7 @@ public class PointServiceTest {
         //when, then
         assertThatThrownBy(() -> pointService.use(userId, 1_000L))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("잔액부족");
+                .hasMessageContaining("잔액부족"); //리뷰포인트1. 검증시 에러메세지 문자열 비교
     }
 
     //사용 성공
