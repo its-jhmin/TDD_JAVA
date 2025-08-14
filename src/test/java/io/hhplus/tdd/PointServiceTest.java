@@ -42,7 +42,7 @@ public class PointServiceTest {
         UserPoint result = pointService.getPoint(userId);
 
         //then
-        assertThat(point).isEqualTo(result.point());
+        assertThat(point).isEqualTo(result.point()); //리뷰포인트2-검증시 어디까지 해야하는가?
     }
 
     //TODO-2. PointService.getPointHistory() 테스트
@@ -59,7 +59,7 @@ public class PointServiceTest {
         List<PointHistory> result = pointService.getPointHistory(userId);
 
         //then
-        assertThat(result).containsExactly(useHistory,chargeHistory);
+        assertThat(result).containsExactly(useHistory,chargeHistory); //리뷰포인트2-검증시 어디까지 해야하는가?
     }
 
     //TODO-3. PointService.charge() 테스트
@@ -101,7 +101,7 @@ public class PointServiceTest {
         UserPoint result = pointService.charge(userId,chargePoint);
 
         //then
-        Assertions.assertEquals(afterChargePoint,result.point());
+        Assertions.assertEquals(afterChargePoint,result.point()); //리뷰포인트2-검증시 어디까지 해야하는가?
     }
 
     //TODO-4. PointService.use() 테스트
@@ -143,6 +143,6 @@ public class PointServiceTest {
         UserPoint result = pointService.use(userId, usePoint);
 
         //then - 결과비교
-        Assertions.assertEquals(afterUsePoint,result.point());
+        Assertions.assertEquals(afterUsePoint,result.point()); //리뷰포인트2-검증시 어디까지 해야하는가?
     }
 }
